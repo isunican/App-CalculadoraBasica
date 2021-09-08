@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/etOper1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:ems="5"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/etOper1"
+        app:layout_constraintStart_toStartOf="@+id/etOper1"
+        app:layout_constraintTop_toBottomOf="@+id/etOper1" />
+
+    <EditText
+        android:id="@+id/etOper2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="5"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/etOper1"
+        app:layout_constraintStart_toStartOf="@+id/etOper1"
+        app:layout_constraintTop_toBottomOf="@+id/spn" />
+
+    <TextView
+        android:id="@+id/txtRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="@+id/etOper2"
+        app:layout_constraintStart_toStartOf="@+id/etOper2"
+        app:layout_constraintTop_toBottomOf="@+id/etOper2"
+        tools:text="888.88" />
+
+    <Button
+        android:id="@+id/btnCalcula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="calcula"
+        android:text="@string/calcula"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRes" />
+</androidx.constraintlayout.widget.ConstraintLayout>

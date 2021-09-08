@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Calculadora</string>
+    <string name="borrar">Borrar</string>
+    <string name="calcula">Calcula!</string>
+    <string-array name="operacionesArray">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+    </string-array>
+    <string name="calculadora_avanzada">Avanzada</string>
+</resources>
