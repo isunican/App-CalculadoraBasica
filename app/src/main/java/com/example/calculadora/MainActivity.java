@@ -45,6 +45,38 @@ public class MainActivity extends AppCompatActivity {
         spn.setAdapter(adapter);
     }
 
+    /**
+     * Método que tenemos que definir para que se muestre el menú de opciones en esta
+     * actividad. El menú de opciones es el menú con un icono de 3 puntos que aparece en la parte
+     * superior izquierda de la pantalla
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    /**
+     * Método que se va a llamar automáticamente al pulsar sobre cualquier item del menú de opciones
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menuItemAvanzada:
+                Intent intent = new Intent(this, AvanzadaActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * Listener del boton Calcular. La asignacion de este listener con el boton se realiza en el
+     * layout: atributo onclick del boton
+     * @param view
+     */
     public void calcula(View view) {
         String str1 = etOper1.getText().toString();
         String str2 = etOper2.getText().toString();
