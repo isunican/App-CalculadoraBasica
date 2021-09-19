@@ -4,6 +4,12 @@
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
+
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/vcs.xml
+/.idea/compiler.xml
+
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
