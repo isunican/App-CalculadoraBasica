@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         txtResult = findViewById(R.id.txtRes);
 
         // Configuramos el Spinner
-        // Tomamos sus valores posibles del array de strings "operacioneArray", definido
+        // Tomamos sus valores posibles del array de strings "operacionesArray", definido
         // en string.xml
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.operacionesArray,
