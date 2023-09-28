@@ -1,5 +1,53 @@
 plugins {
     id 'com.android.application'
+    id "org.sonarqube" version "4.0.0.2929"
+    id 'jacoco'
+}
+
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = '0.8.10'
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*'] // needed to support roboelectric with jacoco
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def mainSrc = "$project.projectDir/src/main/java"
+    def javaTree = fileTree(dir: "$project.buildDir/intermediates/javac/debug/classes", excludes: fileFilter)
+
+    sourceDirectories.setFrom(files([mainSrc]))
+    classDirectories.setFrom(files([javaTree]))
+    executionData.setFrom(fileTree(dir: project.buildDir, includes: ['jacoco/testDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec']))
+}
+
+// to launch sonar: gradlew.bat clean jacocoTestReport sonarqube
+sonar {
+    properties {
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.organization", "isuc"
+        property "sonar.login", "120537998e2c122476f30cade8d4a25865210fa6"
+        property "sonar.projectKey", "Calculadora-Juan"
+        property "sonar.projectName", "Calculadora-Juan"
+
+        // I need this property to avoid the error where sonarqube does not close some files and
+        // prevents a clean afterwards
+        property "sonar.scm.disabled", true
+
+        // this property is deprecated, now I use the xml file defined below it
+        // property "sonar.jacoco.reportPaths", "${project.buildDir}/jacoco/testDebugUnitTest.exec"
+        property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
+    }
 }
 
 android {

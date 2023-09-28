@@ -1,13 +1,24 @@
 package com.example.calculadora;
 
+import static androidx.test.espresso.Espresso.*;
+import static androidx.test.espresso.action.ViewActions.*;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.*;
+
 import android.content.Context;
 
+import androidx.test.espresso.Espresso;
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 /**
@@ -17,10 +28,19 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+
+    @Rule
+    public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule(MainActivity.class);
+
     @Test
     public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.calculadora", appContext.getPackageName());
+        onView(withId(R.id.etOper1)).perform(typeText("5"));
+        onView(withId(R.id.etOper2)).perform(typeText("2"));
+        onView(withId(R.id.spn)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("*"))).perform(click());
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.btnCalcula)).perform(click());
+        onView(withId(R.id.txtRes)).check(matches(withText("10.0")));
+
     }
 }
