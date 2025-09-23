@@ -1,13 +1,13 @@
 plugins {
     id 'com.android.application'
-    id "org.sonarqube" version "4.0.0.2929"
+    id "org.sonarqube" version "5.1.0.4882"
     id 'jacoco'
 }
 
 apply plugin: "jacoco"
 
 jacoco {
-    toolVersion = '0.8.10'
+    toolVersion = '0.8.12'
 }
 
 tasks.withType(Test) {
@@ -15,7 +15,8 @@ tasks.withType(Test) {
     jacoco.excludes = ['jdk.internal.*'] // needed to support roboelectric with jacoco
 }
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+tasks.register('jacocoTestReport', JacocoReport) {
+    dependsOn 'testDebugUnitTest'
 
     reports {
         xml.required = true
@@ -24,7 +25,8 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
 
     def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
     def mainSrc = "$project.projectDir/src/main/java"
-    def javaTree = fileTree(dir: "$project.buildDir/intermediates/javac/debug/classes", excludes: fileFilter)
+    // Nota: La ruta de las clases compiladas puede cambiar dependiendo de la versión de AGP usada.
+    def javaTree = fileTree(dir: "$project.buildDir/intermediates/javac/debug/compileDebugJavaWithJavac", excludes: fileFilter)
 
     sourceDirectories.setFrom(files([mainSrc]))
     classDirectories.setFrom(files([javaTree]))
@@ -36,7 +38,7 @@ sonar {
     properties {
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.organization", "isuc"
-        property "sonar.login", "120537998e2c122476f30cade8d4a25865210fa6"
+        property "sonar.token", "120537998e2c122476f30cade8d4a25865210fa6"
         property "sonar.projectKey", "Calculadora-Juan"
         property "sonar.projectName", "Calculadora-Juan"
 
