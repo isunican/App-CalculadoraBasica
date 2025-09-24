@@ -97,4 +97,14 @@ public class MainActivity extends AppCompatActivity {
             txtResult.setText(String.valueOf(result));
         }
     }
+
+    /**
+     * Listener del boton Avanzada. La asignacion de este listener con el boton se realiza en el
+     * layout: atributo onclick del boton
+     * @param view
+     */
+    public void goToAvanzada(View view) {
+        Intent intent = new Intent(this, AvanzadaActivity.class);
+        startActivity(intent);
+    }
 }

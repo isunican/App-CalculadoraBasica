@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A9E3E7E9"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/etOper1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="128dp"
         android:ems="5"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,27 +23,30 @@
         android:id="@+id/spn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/etOper2"
         app:layout_constraintEnd_toEndOf="@+id/etOper1"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="@+id/etOper1"
-        app:layout_constraintTop_toBottomOf="@+id/etOper1" />
+        app:layout_constraintTop_toBottomOf="@+id/etOper1"
+        app:layout_constraintVertical_bias="0.63" />
 
     <EditText
         android:id="@+id/etOper2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="96dp"
         android:ems="5"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="@+id/etOper1"
         app:layout_constraintStart_toStartOf="@+id/etOper1"
-        app:layout_constraintTop_toBottomOf="@+id/spn" />
+        app:layout_constraintTop_toBottomOf="@+id/etOper1" />
 
     <TextView
         android:id="@+id/txtRes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
+        android:textColor="#F44336"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="@+id/etOper2"
         app:layout_constraintStart_toStartOf="@+id/etOper2"
@@ -52,10 +57,21 @@
         android:id="@+id/btnCalcula"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:onClick="calcula"
         android:text="@string/calcula"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtRes" />
+
+    <Button
+        android:id="@+id/btnAvanzada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="goToAvanzada"
+        android:text="Avanzada"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
