@@ -2,11 +2,11 @@
 
 Este proyecto consiste en una calculadora simple que dados dos operadores y elegida una operación, calcula su resultado. Su interfaz puede observarse en la siguiente figura. Incorpora además un menú con varias opciones: la calculadora simple y una pantalla acerca de.
 
-![](PantallaInicial.png)
+<img src="PantallaInicial.png" width="300">
 
 Se pide añadir otra opción con una calculadora más real, con un aspecto como el que se muestra en la siguiente figura.
 
-![](PantallaFinal.png)
+<img src="PantallaFinal.png" width="300">
 
 Para ello habrá que añadir una nueva actividad con su layout y añadirla al menú actual.
 
